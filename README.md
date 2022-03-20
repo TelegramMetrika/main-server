@@ -35,7 +35,7 @@
 
 Настроить Git или GitHub Desktop введя свои `username` и `email` от аккаунта созданного на [github](https://www.github.com).
 
-## Форк репозитория Morelia Server ##
+## Форк репозитория ##
 
 Если ты не включен в команду на GitHub'е проекта, то необходимо сначала форкнуть к себе репозиторий перейдя по [ссылке](hhttps://github.com/TelegramMetrika/main-server/fork).
 
