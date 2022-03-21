@@ -7,7 +7,7 @@ class Metrika(SqlAlchemyBase):
 
     id = sa.Column(sa.Integer,
                    primary_key=True, autoincrement=True)
-    name = sa.Column(sa.String, nullable=True)
+    data = sa.Column(sa.String, nullable=True)
     token = sa.Column(sa.String, nullable=True)
     users = sa.Column(sa.String, nullable=True)
 
@@ -15,4 +15,9 @@ from typing import Optional
 from pydantic import BaseModel
 
 class Body(BaseModel):
-    user: str
+    user: dict
+
+class Reg(BaseModel):
+    bot_id: str
+    name: str
+    username: str

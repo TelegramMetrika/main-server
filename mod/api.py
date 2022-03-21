@@ -4,9 +4,10 @@ import datetime
 import platform
 import socket
 
-def stat():
+def stat(server_time):
     mem = psutil.virtual_memory()
     active_since = datetime.datetime.fromtimestamp(psutil.boot_time())
+    server_time = datetime.datetime.now() - server_time
     cpu = psutil.cpu_percent()
     internet = psutil.net_io_counters()
     #st = speedtest.Speedtest()
@@ -28,7 +29,8 @@ def stat():
 
     data = {
         'ip': socket.gethostbyname(socket.getfqdn()),
-        'uptime': str(datetime.datetime.now() - active_since),
+        'pc_uptime': str(datetime.datetime.now() - active_since),
+        'server_uptime': str(server_time),
         'system': platform.system(),
         'release': platform.release(),
         'version': platform.version(),

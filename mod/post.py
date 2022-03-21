@@ -10,8 +10,7 @@ class DB():
         token = token_urlsafe(32)
         session = create_session()
         m = Metrika(
-            id=data.id,
-            name=data.name,
+            data='{"id": "' + data.bot_id + '", "name": "' + data.name + '", "username": "' + data.username + '"}',
             token=token,
             users='{}'
         )
@@ -21,32 +20,41 @@ class DB():
         return True
 
     def _get_metrika(id):
-        session = create_session()
-        m = session.query(Metrika).\
-    				filter(Metrika.id == id).\
-    				one()
+        try:
+            session = create_session()
+            m = session.query(Metrika).\
+                        filter(Metrika.id == id).\
+                        one()
 
-        return Metrika(
-            id=m.id,
-            name=m.name,
-            token=m.token,
-            users=m.users
-        )
+            return Metrika(
+                id=m.id,
+                data=m.data,
+                token=m.token,
+                users=m.users
+            )
+        except:
+            return None
 
     def _check_token(id, token):
-        session = create_session()
-        m = session.query(Metrika).\
-    				filter(Metrika.id == id).\
-    				one()
+        try:
+            session = create_session()
+            m = session.query(Metrika).\
+                        filter(Metrika.id == id).\
+                        one()
 
-        return m.token == token
+            return m.token == token
+        except:
+            return False
 
     def _add_data(id, data):
-        session = create_session()
-        m = session.query(Metrika).\
-    				filter(Metrika.id == id).\
-    				one()
+        try:
+            session = create_session()
+            m = session.query(Metrika).\
+                        filter(Metrika.id == id).\
+                        one()
 
-        res = ''
+            # ...
 
-        return True
+            return True
+        except:
+            return False
