@@ -33,7 +33,7 @@ class DB():
                 users=m.users
             )
         except:
-            return None
+            return 'Not found'
 
     def _check_token(id, token):
         try:

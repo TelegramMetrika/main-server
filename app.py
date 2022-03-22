@@ -13,6 +13,7 @@ import os
 
 app = FastAPI()
 server_time = datetime.datetime.now()
+
 from mod.db import global_init
 global_init("database.db")
 
@@ -39,7 +40,7 @@ async def main_page():
 @app.post('/status')
 async def status_page(req: Request):
     """Запрос состояния сервера"""
-    return {'stats': stat(server_time)}
+    return stat(server_time)
 
 @app.post("/create/")
 async def api_req_create(req: Request, data: Reg):
